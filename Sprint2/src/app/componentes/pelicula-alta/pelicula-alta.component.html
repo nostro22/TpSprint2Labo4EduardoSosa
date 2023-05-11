@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <form [formGroup]="formUser" class="login-form">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="imageInput" class="form-label">Image:</label>
+            <input formControlName="foto" type="text" class="form-control" id="imageInput" >
+          </div>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input formControlName="nombre" type="text" class="form-control" id="nombre" >
+          </div>
+          <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo:</label>
+            <input formControlName="tipo" type="text" class="form-control" id="tipo" >
+          </div>
+          <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha:</label>
+            <input formControlName="fecha" type="date" class="form-control" id="fecha" >
+          </div>
+          <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad:</label>
+            <input formControlName="cantidad" type="number" class="form-control" id="cantidad">
+          </div>
+        </div>
+  
+       
+      </div>
+    </form>
+  
+    <button [disabled]="!formUser.valid" class="btn btn-primary mt-2 col-8" (click)="altaPelicula()">Alta</button>
+  

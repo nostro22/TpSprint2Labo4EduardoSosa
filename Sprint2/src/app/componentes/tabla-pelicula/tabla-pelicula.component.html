@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Fecha de estreno</th>
+        <th scope="col">Cantidad de publico</th>
+        <th scope="col">Foto de la pelicula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr (click)="selecionarProducto(pelicula)" *ngFor="let pelicula of peliculas$ | async">
+        <th scope="row"></th>
+        <td>{{pelicula.nombre}}</td>
+        <td>{{pelicula.tipo}}</td>
+        <td>{{pelicula.fechaDeEstreno}}</td>
+        <td>{{pelicula.cantidadDePublico}}</td>
+        <td><img class="img-thumbnail" [src]="pelicula.fotoPelicula" alt="{{pelicula.nombre}}"></td>
+      </tr>
+    </tbody>
+  </table>

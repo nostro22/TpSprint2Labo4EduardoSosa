@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="d-flex gap-5">
+    <div (click)="accesoRapido()" class="card" style="width: 8rem;">
+      <img src="https://github.com/nostro22.png" class="card-img-top" alt="...">
+      <div class="card-body bg-primary bg-opacity-50">
+        <h5 class="card-title fw-bold">Cuenta Administrador</h5>
+      </div>
+    </div>
+    <div (click)="accesoRapido()" class="card" style="width: 8rem;">
+      <img src="https://github.com/nostro22.png" class="card-img-top" alt="...">
+      <div class="card-body bg-primary bg-opacity-50">
+        <h5 class="card-title fw-bold">Cuenta Administrador</h5>
+      </div>
+    </div>
+    <div (click)="accesoRapido()" class="card" style="width: 8rem;">
+      <img src="https://github.com/nostro22.png" class="card-img-top" alt="...">
+      <div class="card-body bg-primary bg-opacity-50">
+        <h5 class="card-title fw-bold">Cuenta Administrador</h5>
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="formularioRegistroUsuario" (ngSubmit)="registrarUsuario()">
+    <div class="row">
+      <div class="col-md-12 mb-5">
+        <h2>Angular Forms</h2>
+      </div>
+    </div>
+    <div class="row formulario">
+      <div class="col-md-6 mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input formControlName="nombre" type="text" class="form-control" id="nombre" placeholder="Ingrese nombre">
+        <small
+          *ngIf="formularioRegistroUsuario.controls.nombre.errors?.['required'] && formularioRegistroUsuario.controls.nombre.touched"
+          class="invalid">
+          El nombre es requerido
+        </small>
+        <small class="invalid"
+          *ngIf="formularioRegistroUsuario.controls.nombre.errors?.['containsSpaces'] &&formularioRegistroUsuario.controls.nombre.touched">
+          El nombre no puede contener espacios
+        </small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" id="apellido" placeholder="Ingrese apellido">
+        <small *ngIf="formularioRegistroUsuario.controls.apellido.errors?.['required'] &&
+          formularioRegistroUsuario.controls.apellido.touched" class="invalid">
+          El apellido es requerido
+        </small>
+        <small class="invalid"
+          *ngIf="formularioRegistroUsuario.controls.apellido.errors?.['containsSpaces'] &&formularioRegistroUsuario.controls.apellido.touched">
+          El apellido no puede contener espacios
+        </small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="dni" class="form-label">Edad</label>
+        <input formControlName="edad" type="number" class="form-control" id="edad" placeholder="Ingrese edad">
+        <small *ngIf="formularioRegistroUsuario.controls.edad.errors?.['required'] &&
+          formularioRegistroUsuario.controls.edad.touched" class="invalid">La edad es requerida</small>
+        <small *ngIf="formularioRegistroUsuario.controls.edad.errors?.['min'] &&
+          formularioRegistroUsuario.controls.edad.touched" class="invalid">debe ser mayor de edad</small>
+        <small *ngIf="formularioRegistroUsuario.controls.edad.errors?.['max'] &&
+          formularioRegistroUsuario.controls.edad.touched" class="invalid">No puede ser momia</small>
+
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="sexo" class="form-label">Sexo</label>
+        <input type="text" readonly formControlName="sexo" class="form-control" id="sexo" placeholder="Seleccione sexo">
+        <div>
+          <button type="button" (click)="setSexo('Masculino')" class="btn btn-primary">Masculino</button>
+          <button type="button" (click)="setSexo('Femenino')" class="btn btn-warning">Femenino</button>
+        </div>
+        <small *ngIf="formularioRegistroUsuario.controls.sexo.errors?.['required'] &&
+          formularioRegistroUsuario.controls.sexo.touched" class="invalid">El sexo es requerido</small>
+      </div>
+      <div class="col-md-12 mb-5">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Ingrese email">
+        <small *ngIf="formularioRegistroUsuario.controls.email.errors?.['required'] &&
+          formularioRegistroUsuario.controls.email.touched" class="invalid">El email es requerido</small>
+        <small *ngIf="formularioRegistroUsuario.controls.email.errors?.['email'] &&
+          formularioRegistroUsuario.controls.email.touched" class="invalid">
+          Formato de mail incorrecto
+        </small>
+      </div>
+      <div class="col-md-12 mb-5">
+        <label for="clave" class="form-label">Clave</label>
+        <input formControlName="clave" type="password" class="form-control" id="clave" placeholder="Ingrese clave">
+        <small *ngIf="formularioRegistroUsuario.controls.clave.errors?.['minlength'] &&
+  formularioRegistroUsuario.controls.clave.touched" class="invalid">
+          Minimo 6 letras
+        </small>
+        <small *ngIf="formularioRegistroUsuario.controls.clave.errors?.['required'] &&
+          formularioRegistroUsuario.controls.clave.touched" class="invalid">Contraseña es requerido</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mb-5">
+        <div class="form-check">
+          <input formControlName="terminos" type="checkbox" class="form-check-input" id="terminos">
+          <label for="recordar" class="form-check-label" for="terminos">
+            Aceptar términos y condiciones
+          </label>
+          <div *ngIf="formularioRegistroUsuario.controls.terminos.errors?.['required'] &&
+          formularioRegistroUsuario.controls.terminos.touched" class="invalid">Es necesario aceptar terminos</div>
+        </div>
+      </div>
+      <div class="col-md-12 d-grid gap-2">
+        <button [disabled]="formularioRegistroUsuario.invalid || !formularioRegistroUsuario.controls.terminos.value"
+          type="submit" class="btn btn-primary btn-block">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

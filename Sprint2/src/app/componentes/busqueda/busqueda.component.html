@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div  class="col-12">
+            <div *ngIf="vista">
+                <app-tabla-pelicula (eventoParaDetalle)="detalleRecibidoMain($event)" ></app-tabla-pelicula>
+            </div>
+            <div *ngIf="!vista">
+                <app-pelicula-listado (eventoParaDetalle)="detalleRecibidoMain($event) "></app-pelicula-listado>
+            </div>
+            <button class="btn btn-primary" (click)="cambiarVista()">Cambiar vista</button>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-4">
+            <app-baja-pelicula [detalleRecibido]="productoAMostrar"></app-baja-pelicula>
+        </div>
+        <div class="col-4">
+            <app-detalle-pelicula (eventoParaDetalle)="detalleRecibidoMain($event)" [detalleRecibido]="productoAMostrar"></app-detalle-pelicula>
+
+        </div>
+        <div class="col-4">
+            <app-edicion-pelicula [detalleRecibido]="productoAMostrar"></app-edicion-pelicula>
+        </div>
+    </div>
+</div>

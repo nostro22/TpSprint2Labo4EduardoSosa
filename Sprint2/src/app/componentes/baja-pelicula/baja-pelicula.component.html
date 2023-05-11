@@ -1,0 +1,15 @@
+<div class="bg-danger container rounded-5 mt-2 h-75 bg-opacity-50 d-flex flex-column justify-content-center align-items-center">
+    
+    <div *ngIf="detalleRecibido">
+
+        <div>
+            <h2 >El elemento seleccionado será eliminado</h2>
+        </div>
+        <div>
+            <button class="btn btn-danger" (click)="borrarPelicula()">Borrar Película</button>
+        </div>
+    </div>
+    <div *ngIf="!detalleRecibido">
+        <p>Seleccione un elemento para poder borrar</p>
+    </div>
+</div>

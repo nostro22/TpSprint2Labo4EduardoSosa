@@ -1,0 +1,9 @@
+<ul class="list-group  ">
+
+    <li (click)="selecionarProducto(pelicula)" class="list-group-item list-group-item-action list-group-item-primary"
+        *ngFor="let pelicula of peliculas$ | async">
+        nombre:{{pelicula.nombre}} | tipo:{{pelicula.tipo}} | Fecha de Estreno:{{pelicula.fechaDeEstreno}} | Cantidad de
+        publico:{{pelicula.cantidadDePublico}} |<img class="img-thumbnail" [src]="pelicula.fotoPelicula"
+            alt="{{pelicula.nombre}}">
+    </li>
+</ul>

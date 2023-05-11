@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lab4simulacro1"
+  },
+  "targets": {
+    "lab4simulacro1": {
+      "hosting": {
+        "simulacroPeliculas": [
+          "lab4simulacro1"
+        ]
+      }
+    }
+  }
+}

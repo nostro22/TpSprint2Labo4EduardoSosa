@@ -1,0 +1,30 @@
+{
+  "hosting": {
+    "site": "tpspring2eduardososa",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "hosting": {
+      "targets": [
+        {
+          "target": "simulacroPeliculas",
+          "public": "dist",
+          "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+          ]
+        }
+      ]
+    }
+  }
+}
