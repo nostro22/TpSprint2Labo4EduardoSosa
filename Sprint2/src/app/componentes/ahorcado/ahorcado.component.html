@@ -1,0 +1,43 @@
+<div class="  col-12 bg-opacity-25 bg-warning m-0 p-0"
+    style="background-image: url('https://media.giphy.com/media/b06uoAfmfXv2NIil0V/giphy.gif'); 
+    background-size: cover; background-position: center; height: 90vh;">
+
+        <div class="row m-0 p-0">
+            <div
+                class="col-8 bg-danger bg-opacity-50 rounded-3 justify-content-center align-items-center d-flex flex-column">
+                <h1 class="col-8 text-center bg-info text-white rounded-3">Juego del Ahorcado</h1>
+                <h1 class="col-6 text-center bg-success text-white rounded-3">Récord Palabras Adivinadas:
+                    {{palabrasAdivinadas}}</h1>
+                <h2 class="col-8 text-center">Intentos restantes: {{ intentos }}</h2>
+
+                <div class="col-6 mb-5 d-flex justify-content-center align-items-center">
+                    <img class="w-50" [src]="imagenAhorcado()">
+                </div>
+
+                <div class="col-8 card-group mb-2">
+                    <div class="card" *ngFor="let letra of palabra.split('')">
+                        <div *ngIf="letrasAdivinadas.includes(letra)" class="card-body bg-success text-center">
+                            <h1>{{ letra }}</h1>
+                        </div>
+                        <div *ngIf="!letrasAdivinadas.includes(letra)" class="card-body bg-warning text-center">
+                            <h1>__</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="jugando" class="col-8 teclado bg-primary bg-opacity-50 container gap-2">
+                    <button class="palabra btn btn-primary m-2" *ngFor="let letra of letrasDisponibles()"
+                        (click)="verificarLetra(letra)">{{ letra }}</button>
+                </div>
+
+                <button *ngIf="!jugando" (click)="volverAJugar()" class="palabra btn btn-primary mt-2 col-8">Volver a
+                    Jugar</button>
+
+                <div class="py-5"></div>
+            </div>
+
+            <div class="col-4 ">
+                <app-chat></app-chat>
+            </div>
+        </div>
+</div>

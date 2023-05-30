@@ -1,0 +1,49 @@
+<div class="w-100 "
+  style="background-image: url('https://media.giphy.com/media/k8kITi9SAwe9JWbUaH/giphy.gif'); background-size: cover; background-position: center; height: 90vh;">
+  
+  <div class=" d-flex justify-content-center ">
+
+    <div class="bg-dark bg-opacity-25 mt-5 container">
+      <div class="container bg-info bg-opacity-25 m-0 p-0" style="height: 70vh; overflow-y: auto; overflow-x: hidden;">
+        <h1 class="text-center text-white bg-danger rounded-3">CHAT</h1>
+        <div class="p-2" *ngFor="let mensajeLista of mensajes">
+          <div [ngClass]="{'row': esEscritor(mensajeLista)}">
+            <div class="col-2"></div>
+            <div class="col-10 justify-content-end">
+              <div class="bg-opacity-50 bg-success p-2 rounded-2" *ngIf="esEscritor(mensajeLista)">
+                <div class="bg-opacity-25">
+                  <div class="text-white">{{ mensajeLista.mensaje }}</div>
+                  <div class="d-flex text-white">
+                    <div class="text-end small-text col-12">{{ mensajeLista.fecha }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-opacity-50 bg-danger col-10 p-2 rounded-2" *ngIf="!esEscritor(mensajeLista)">
+                <div class="bg-opacity-25">
+                  <div class="text-success">{{ mensajeLista.escritoPor }}</div>
+                  <div class="text-white">{{ mensajeLista.mensaje }}</div>
+                  <div class="d-flex text-white">
+                    <div class="text-end small-text col-12">{{ mensajeLista.fecha }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="col-12 d-flex justify-content-center align-items-center">
+        <div class="container bg-info row justify-content-evenly m-0 p-2">
+          <div class="bg-opacity-50 py-2 px-0 m-0 text-center col-10">
+            <input class="text-white bg-info bg-opacity-75 col-11 m-0 p-2" [formControl]="inputControl" maxlength="50"
+              type="text">
+          </div>
+          <button (click)="crearMensaje()"
+            class="m-0 p-0 ion-text-center btn btn-primary d-flex align-items-center justify-content-center col-2">
+            <i class="bi bi-send-fill"></i>
+          </button>
+        </div>
+      </footer>
+    </div>
+
+  </div>
+</div>

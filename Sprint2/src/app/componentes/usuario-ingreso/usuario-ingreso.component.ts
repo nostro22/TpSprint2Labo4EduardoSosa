@@ -35,9 +35,20 @@ export class UsuarioIngresoComponent implements OnInit{
   }
 
  
-  accesoRapido(){
-    this.email.setValue("Eduardo@gmail.com");
-    this.clave.setValue("123456");
+  accesoRapido(usuario:string){
+    if(usuario=='eduardo')
+    {
+      this.email.setValue("Eduardo@gmail.com");
+      this.clave.setValue("123456");
+    }
+    else if(usuario=='administrador') {
+      this.email.setValue("admin@gmail.com");
+      this.clave.setValue("123456");
+    }
+    else if(usuario=='cliente') {
+      this.email.setValue("cliente@gmail.com");
+      this.clave.setValue("123456");
+    }
   }
 
   async logUsuario() {
@@ -46,7 +57,8 @@ export class UsuarioIngresoComponent implements OnInit{
       await new Promise((resolve) => setTimeout(resolve, 3000)); // wait for 3 seconds
       const user = await this.firebase.signIn(this.email.value, this.clave.value);
       if (user) {
-        this.router.navigate(["quien"]); // navigate to the desired route
+        this.firebase.subirHistorialLogin(this.email.value);
+        this.router.navigate(["home"]); // navigate to the desired route
       } else {
         this.toastNotification('No se pudo autenticar al usuario.');
       }

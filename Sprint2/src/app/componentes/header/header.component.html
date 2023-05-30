@@ -1,20 +1,18 @@
-<!-- <h1 class="bg-primary p-5">
-  {{usuarioAut | json}}
 
-</h1> -->
-<header>
-    <div class="px-3 py-2 text-bg-dark">
+<header class="w-100 " style="height: 10vh;">
+    <div class=" py-2 text-bg-dark" style="height: 10vh;">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <h5>Eduardo Andres Sosa Segovia</h5>
+          <a href="/" class="btn btn-warning d-flex align-items-center d-flex  my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <img src="../../../favicon.ico" class="img-fluid w-25" alt="Image">
+            <h3>Eduardo Andres Sosa Segovia</h3>
           </a>
   
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="#" class="nav-link text-secondary">
+              <a href="quien" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"/></svg>
-                Bienvenido
+                Quien Soy
               </a>
             </li>
             <li *ngIf="!usuarioAut">
@@ -29,6 +27,36 @@
                 Cerrar Sección
               </a>
             </li>
+            <li *ngIf="usuarioAut">
+              <a  routerLink="chat" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                Chat
+              </a>
+            </li>
+            <li *ngIf="usuarioAut">
+              <a  routerLink="encuesta" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                Encuesta
+              </a>
+            </li>
+            <li *ngIf="usuarioAut">
+              <a  routerLink="home" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                Juegos
+              </a>
+            </li>
+            <li *ngIf="usuarioAut">
+              <a  routerLink="resultados" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                Resultados
+              </a>
+            </li>
+            <li *ngIf="isAdmin">
+              <a routerLink="encuesta/listado" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+                Listados de encuestas
+              </a>
+            </li>
             <li *ngIf="!usuarioAut">
               <a routerLink="usuario/registro" class="nav-link text-white">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
@@ -41,24 +69,7 @@
                 Error
               </a>
             </li>
-            <!-- <li>
-              <a routerLink="actor/alta" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                Alta Actor
-              </a>
-            </li>
-            <li>
-              <a routerLink="pelicula/alta" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
-                Pelicula Alta
-              </a>
-            </li>
-            <li>
-              <a routerLink="búsqueda" class="nav-link text-white">
-                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#búsqueda"/></svg>
-                Buscar peliculas
-              </a>
-            </li> -->
+      
           </ul>
         </div>
       </div>

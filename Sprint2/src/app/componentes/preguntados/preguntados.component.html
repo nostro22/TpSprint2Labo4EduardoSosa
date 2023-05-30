@@ -1,0 +1,50 @@
+<div class="  col-12 bg-opacity-25 bg-warning m-0 p-0" style="background-image: url('https://media.giphy.com/media/q1hhYf1wo9ZOKPyoVw/giphy.gif'); 
+    background-size: cover; background-position: center; height: 90vh;">
+
+  <div class="row m-0 p-0">
+    <div class=" col-8 ">
+
+      <div class="container  py-5 d-flex justify-content-center">
+        <img class="w-25 img-fluid rounded-3 " src="../../../assets/tribia.png" alt="Tribia">
+        <div *ngIf="mejorAciertos" class="card text-center bg-success" style="width: 18rem;">
+          <div class="card-body">
+            <h1 class="card-title bg-danger bg-opacity-75 text-white rounded-3">Mejor Partida</h1>
+            <img class="img-fluid" src="https://media.giphy.com/media/q1hhYf1wo9ZOKPyoVw/giphy.gif" alt="trivia">
+          </div>
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item text-white fw-bold bg-danger bg-opacity-75">Usuario: {{mejorAciertos['nombre']}}
+            </li>
+            <li class="list-group-item text-white fw-bold bg-warning bg-opacity-25">Tiempo: {{mejorAciertos.tiempo}}
+            </li>
+            <li class="list-group-item text-white fw-bold bg-info bg-opacity-25">Cantidad Aciertos:
+              {{mejorAciertos.aciertos}}</li>
+          </ul>
+        </div>
+      </div>
+      <div
+        class="container mb-2 text-white bg-success bg-opacity-75 col-4 p-2 justify-content-center align-items-center rounded-3">
+        <h3 class=" text-center bg-warning rounded-3 fw-bold">Tiempo: {{formatTime(elapsedTime)}}</h3>
+        <h3 class=" text-center bg-success rounded-3 fw-bold">Aciertos: {{aciertos}}</h3>
+      </div>
+      <div
+        class="container bg-info p-3 rounded-3 bg-opacity-25 col-10 d-grid justify-content-center align-items-center">
+        <div class="justify-content-center   d-flex">
+          <button *ngIf="!playing" (click)="jugar()" class="btn btn-success p-5 text-white">Jugar</button>
+        </div>
+        <div *ngIf="playing">
+          <h1 class="bg-info rounded-3 p-3 text-white fw-bold" [innerHTML]="preguntaActiva.question"></h1>
+          <div class="container d-flex justify-content-center my-2"
+            *ngFor="let opcion of shuffledOptions; let i = index">
+            <button class="btn w-50 h-50 mb-2  btn-info text-white " (click)="opcionSelecionada(opcion)"
+              [id]="'option-' + i">
+              <p [innerHTML]="opcion"></p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 ">
+      <app-chat></app-chat>
+    </div>
+  </div>
+</div>

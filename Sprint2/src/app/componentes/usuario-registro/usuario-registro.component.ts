@@ -75,6 +75,7 @@ export class UsuarioRegistroComponent {
         this.firebase.altaUsuario(usuario,usuario.email,this.clave.value)
         .then(() => {
           console.log('Usuario registrado con éxito.');
+          this.firebase.signIn(usuario.email,this.clave.value);
           this.router.navigate([""]);
           // Add any additional actions you want to perform after successful registration
         })

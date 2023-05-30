@@ -1,0 +1,33 @@
+.img-custom{
+  height: 20vh;
+  width: 20vh;
+    
+}
+
+.btn-overlay {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.btn-overlay:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: rgb(146, 242, 255); /* Adjust the color and opacity as needed */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.774); /* Adjust the shadow color and intensity as needed */
+}
+  
+  .btn-overlay:hover:before {
+    opacity: 1;
+  }
+  .btn-overlay:hover {
+    transform: scale(1.1);
+    border-radius: 5rem;
+  }

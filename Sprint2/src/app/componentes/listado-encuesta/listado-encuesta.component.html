@@ -1,0 +1,19 @@
+<div class="  col-12 bg-opacity-25 bg-warning m-0 p-0" style="background-image: url('https://media.giphy.com/media/9LZTcawH3mc8V2oUqk/giphy.gif'); 
+    background-size: cover; background-position: center; height: 90vh;">
+
+    <div class=" m-0 p-0  justify-content-center align-items-center d-flex">
+        <div class="d-flex container overflow-auto  bg-danger bg-opacity-25 rounded-3  gap-5 p-5 m-5">
+
+            <div class="card  text-center bg-success p-2 col-3"
+                *ngFor="let encuesta of listadoEncuestas, let i = index">
+                <div class="card-body">
+                    <h1 class="card-title bg-danger bg-opacity-75 text-white rounded-3">Encuesta {{i+1}}</h1>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-white fw-bold bg-danger bg-opacity-75"
+                            *ngFor="let atributo of encuesta | keyvalue">{{ atributo.key }}: {{ atributo.value }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

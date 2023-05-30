@@ -30,13 +30,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.http.todos().subscribe(
-      banderas => {
-        console.info(banderas);
-        this.misBanderas = banderas;
-      });
+    // this.http.todos().subscribe(
+    //   banderas => {
+    //     console.info(banderas);
+    //     this.misBanderas = banderas;
+    //   });
 
-    this.misPaises$ = this.http.todos();
+    // this.misPaises$ = this.http.todos();
   }
   buscarPais(nombre: string) {
     this.http.pais(nombre).subscribe(t =>

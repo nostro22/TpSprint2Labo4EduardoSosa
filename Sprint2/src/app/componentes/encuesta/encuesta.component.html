@@ -1,0 +1,152 @@
+<div class="w-100" style="background-image: url('https://media.giphy.com/media/ij1WvlilscRFoIRn7u/giphy.gif'); background-size: cover;
+     background-position: center; height: 90vh;">
+    <div class="d-flex">
+        <div class="container mt-5 bg-info bg-opacity-50  rounded-3">
+            <form [formGroup]="formularioEncuesta" (ngSubmit)="subirEncuesta()">
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        <h2 class="text-white fw-bold">Formulario de Encuesta</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input formControlName="nombre" type="text" class="form-control" id="nombre"
+                            placeholder="Ingrese nombre">
+                        <small
+                            *ngIf="formularioEncuesta.controls.nombre.errors?.['required'] && formularioEncuesta.controls.nombre.touched"
+                            class="invalid">
+                            El nombre es requerido
+                        </small>
+                        <small class="invalid"
+                            *ngIf="formularioEncuesta.controls.nombre.errors?.['containsSpaces'] && formularioEncuesta.controls.nombre.touched">
+                            El nombre no puede contener espacios
+                        </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input formControlName="apellido" type="text" class="form-control" id="apellido"
+                            placeholder="Ingrese apellido">
+                        <small
+                            *ngIf="formularioEncuesta.controls.apellido.errors?.['required'] && formularioEncuesta.controls.apellido.touched"
+                            class="invalid">
+                            El apellido es requerido
+                        </small>
+                        <small class="invalid"
+                            *ngIf="formularioEncuesta.controls.apellido.errors?.['containsSpaces'] && formularioEncuesta.controls.apellido.touched">
+                            El apellido no puede contener espacios
+                        </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="edad" class="form-label">Edad</label>
+                        <input formControlName="edad" type="number" class="form-control" id="edad"
+                            placeholder="Ingrese edad">
+                        <small
+                            *ngIf="formularioEncuesta.controls.edad.errors?.['required'] && formularioEncuesta.controls.edad.touched"
+                            class="invalid">
+                            La edad es requerida
+                        </small>
+                        <small
+                            *ngIf="formularioEncuesta.controls.edad.errors?.['min'] && formularioEncuesta.controls.edad.touched"
+                            class="invalid">
+                            Debe ser mayor de edad
+                        </small>
+                        <small
+                            *ngIf="formularioEncuesta.controls.edad.errors?.['max'] && formularioEncuesta.controls.edad.touched"
+                            class="invalid">
+                            No puede ser momia!! maximo 99 años
+                        </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="telefono" class="form-label">telefono</label>
+                        <input formControlName="telefono" type="text" class="form-control" id="telefono"
+                            placeholder="Ingrese telefono">
+                        <small
+                            *ngIf="formularioEncuesta.controls.telefono.errors?.['required'] && formularioEncuesta.controls.telefono.touched"
+                            class="invalid">
+                            El telefono es requerido
+                        </small>
+                        <small class="invalid"
+                            *ngIf="formularioEncuesta.controls.telefono.errors?.['pattern'] && formularioEncuesta.controls.telefono.touched">
+                            Porfavor ingrese un numero de telefono valido con un maximo de 10 digitos.
+                        </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">¿Como prefieres jugar?</label>
+                        <div>
+                            <input formControlName="inputPreferido" type="radio" id="control" name="inputPreferido"
+                                value="Control">
+                            <label for="control">Con Control</label>
+                        </div>
+                        <div>
+                            <input formControlName="inputPreferido" type="radio" id="teclado" name="inputPreferido"
+                                value="Teclado y raton">
+                            <label for="teclado">Con raton y teclado</label>
+                        </div>
+                        <small
+                            *ngIf="formularioEncuesta.controls.inputPreferido.errors?.['required'] && formularioEncuesta.controls.inputPreferido.touched"
+                            class="invalid">
+                            El input Preferido es requerido
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="textarea" class="form-label">Cuentanos tu experiencia en los juegos y cualquier
+                            recomendacion que tengas (minimo 50 caracteres maximo 100)</label>
+                        <textarea formControlName="textarea" class="form-control text-dark" id="textarea" rows="3"
+                            maxlength="100"></textarea>
+                        <small
+                            *ngIf="formularioEncuesta.controls.textarea.errors?.['required'] && formularioEncuesta.controls.textarea.touched"
+                            class="invalid">
+                            Llenar la recomendacion es obligatorio minimo 50 caracteres
+                        </small>
+                        <small
+                            *ngIf="formularioEncuesta.controls.textarea.errors?.['minlength'] && formularioEncuesta.controls.textarea.touched"
+                            class="invalid">
+                            La recomendacion debe tener al menos 50 caracteres
+                        </small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label>¿Cuales juegos jugaste?:</label>
+                                <div class="form-check">
+                                    <input formControlName="preference1" class="form-check-input" type="checkbox"
+                                        id="preference1">
+                                    <label class="form-check-label" for="preference1">El Ahorcado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="preference2" class="form-check-input" type="checkbox"
+                                        id="preference2">
+                                    <label class="form-check-label" for="preference2">Mayor ó Menor</label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="preference3" class="form-check-input" type="checkbox"
+                                        id="preference3">
+                                    <label class="form-check-label" for="preference3">Trivia Preguntados</label>
+                                </div>
+                                <div class="form-check">
+                                    <input formControlName="preference4" class="form-check-input" type="checkbox"
+                                        id="preference4">
+                                    <label class="form-check-label" for="preference4">Asteroides (Juego Propio)</label>
+                                </div>
+                                <div *ngIf="(formularioEncuesta.errors?.['requireOnePreference'] && 
+                            (formularioEncuesta.controls.preference1.touched ||
+                            formularioEncuesta.controls.preference2.touched ||
+                            formularioEncuesta.controls.preference3.touched ||
+                            formularioEncuesta.controls.preference4.touched 
+                            ))
+                            " class="text-danger">Porfavor marque al menos un juego jugado</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 d-grid gap-2">
+                        <button [disabled]="formularioEncuesta.invalid" type="submit"
+                            class="btn btn-success btn-block">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
