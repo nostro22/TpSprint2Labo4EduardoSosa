@@ -10,7 +10,7 @@ import { FirestoreService } from 'src/app/servicios/firestore.service';
 export class HeaderComponent implements OnInit {
   usuarioAut: any;
   isAdmin: any;
-
+  nombreUsuario:string="";
   constructor(
     private firebase: FirestoreService,
     private router: Router,
@@ -18,11 +18,16 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.firebase.token$.subscribe((token) => {
+    this.firebase.token$.subscribe(async (token) => {
       if (token !== '') {
         this.usuarioAut = true;
       } else {
         this.usuarioAut = localStorage.getItem('token');
+        if(this.usuarioAut!="")
+        {
+          this.usuarioAut = await this.firebase.getUserByUID(this.usuarioAut);
+          this.nombreUsuario = this.usuarioAut.nombre;
+        }
       }
     });
 
@@ -49,6 +54,16 @@ export class HeaderComponent implements OnInit {
   async refreshComponent(): Promise<void> {
     try {
       this.isAdmin = await this.firebase.esAdministrador();
+      if(localStorage.getItem("token")!="")
+      {
+        this.nombreUsuario = this.usuarioAut.email;
+        this.usuarioAut = localStorage.getItem('token');
+        this.usuarioAut = await this.firebase.getUserByUID(this.usuarioAut);
+        this.nombreUsuario = this.usuarioAut.nombre;
+      }else
+      {
+        this.nombreUsuario="";
+      }
       this.cd.detectChanges();
     } catch (error) {
       console.error('Error fetching isAdmin:', error);

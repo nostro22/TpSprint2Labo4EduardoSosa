@@ -4,9 +4,14 @@
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="btn btn-warning d-flex align-items-center d-flex  my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-            <img src="../../../favicon.ico" class="img-fluid w-25" alt="Image">
-            <h3>Eduardo Andres Sosa Segovia</h3>
+            <div>
+              <img src="../../../favicon.ico" class="img-fluid w-25" alt="Image">
+              <h3 *ngIf="nombreUsuario">{{nombreUsuario}}</h3>
+              <h3 *ngIf="!nombreUsuario">Visitante</h3>
+
+            </div>
           </a>
+
   
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>

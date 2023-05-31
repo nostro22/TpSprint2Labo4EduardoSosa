@@ -479,6 +479,7 @@ export class FirestoreService {
       const user = {
         uid: docSnapshot.data()['_id'],
         email: docSnapshot.data()['email'],
+        nombre: docSnapshot.data()['nombre']
         // Add other fields as needed
       };
       this.usuarioAutenticado = user;
